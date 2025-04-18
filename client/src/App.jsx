@@ -5,7 +5,7 @@ function App() {
   const [message, setMessage] = useState('');
 
   return (
-    <div>
+    <div className = "app-container">
       <h1>Phishing Detector</h1>
       <textarea 
         value={message}
