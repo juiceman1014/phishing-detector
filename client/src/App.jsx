@@ -4,6 +4,11 @@ import './App.css'
 function App() {
   const [message, setMessage] = useState('');
 
+  const handleSubmit = () => {
+    console.log(message);
+    alert('Submitted!');
+  }
+
   return (
     <div className = "app-container">
       <h1>Phishing Detector</h1>
@@ -12,7 +17,7 @@ function App() {
         onChange={(e) => setMessage(e.target.value)}
         placeholder="Enter your suspicious message"
       />
-      <button>Submit</button>
+      <button onClick={handleSubmit}>Submit</button>
     </div>
   )
 }
