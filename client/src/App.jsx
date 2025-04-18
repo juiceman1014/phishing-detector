@@ -4,9 +4,18 @@ import { useState } from 'react'
 function App() {
   const [message, setMessage] = useState('');
 
-  const handleSubmit = () => {
-    console.log(message);
-    alert('Submitted!');
+  const handleSubmit = async () => {
+    try{
+      const res = await axios.post("http://localhost:8000/analyze", {
+        message: message,
+      });
+
+      console.log("Server response: ", res.data);
+      alert(`Submitted! Server recieved: "${res.data.message}"`);
+    } catch(err){
+      console.error("Error submitting message:", err);
+      alert("Submission failed!");
+    }
   }
 
   return (
