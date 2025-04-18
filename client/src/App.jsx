@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.css'
 
 function App() {
   const [message, setMessage] = useState('');
@@ -10,7 +9,7 @@ function App() {
   }
 
   return (
-    <div className = "app-container">
+    <div className = "flex flex-col">
       <h1>Phishing Detector</h1>
       <textarea 
         value={message}
