@@ -11,7 +11,15 @@ function App() {
       });
 
       console.log("Server response: ", res.data);
+
       alert(`Submitted! Server recieved: "${res.data.message}"`);
+
+      if(res.data.is_phishing){
+        alert("This message is likely a phishing attempt!")
+      }else{
+        alert("This message is legit!")
+      }
+      
     } catch(err){
       console.error("Error submitting message:", err);
       alert("Submission failed!");
