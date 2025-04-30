@@ -6,7 +6,7 @@
 python3 -m venv env
 ```
 
-**2. Activate the virtual environment**
+**2. Activate the virtual environment**<br>
 On macOS/Linux:
 
 ```bash
