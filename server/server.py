@@ -10,16 +10,53 @@ CORS(app)
 def is_phishing(message):
     msg = message.lower()
     score = 0
-
-    keywords = ["urgent", "click here", "limited time"]
-    score += sum(kw in msg for kw in keywords)
-
-    if re.search(r"https?://", msg):
-        score += 1
     
+    # Expanded list of suspicious keywords and phrases
+    keywords = [
+        "urgent", "click here", "limited time", "account suspended", "verify your account",
+        "update your information", "security alert", "unusual activity", "confirm your details",
+        "login attempt", "prize", "winner", "lottery", "inheritance", "claim your reward",
+        "password expired", "suspicious activity", "unauthorized access"
+    ]
+    score += sum(kw in msg for kw in keywords)
+    
+    # Enhanced URL checks
+    urls = re.findall(r'https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+', msg)
+    if urls:
+        score += 1
+        
+        # Check for IP addresses in URLs instead of domain names
+        if re.search(r'https?://\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}', msg):
+            score += 2
+        
+        # Check for URL shorteners
+        shorteners = ["bit.ly", "tinyurl", "goo.gl", "t.co", "is.gd", "ow.ly"]
+        if any(short in url for short in shorteners for url in urls):
+            score += 1
+    
+    # Check for excessive punctuation
     if message.count("!") > 3:
         score += 1
-
+    
+    # Check for urgency indicators
+    urgency_phrases = ["act now", "limited offer", "expires soon", "immediate action", "today only"]
+    score += sum(phrase in msg for phrase in urgency_phrases)
+    
+    # Check for sensitive information requests
+    sensitive_requests = ["ssn", "social security", "password", "credit card", "bank account", 
+                         "pin", "mother's maiden name", "birth date", "passport"]
+    score += sum(info in msg for info in sensitive_requests) * 2
+    
+    # Check for poor grammar and spelling
+    grammar_indicators = ["kindly", "gud", "ur", "plz", "pls", "u ", " r ", "dear customer", "dear user"]
+    if sum(indicator in msg for indicator in grammar_indicators) > 1:
+        score += 1
+    
+    # Check for common phishing phrases
+    common_phrases = ["verify your identity", "confirm your information", "update your account",
+                     "your account has been suspended", "unusual activity detected"]
+    score += sum(phrase in msg for phrase in common_phrases)
+    
     return score >= 3
     
 @app.route("/analyze", methods=["POST"])
