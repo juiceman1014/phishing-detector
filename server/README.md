@@ -6,7 +6,7 @@
 python3 -m venv env
 ```
 
-**2. Activate the virtual environment**<br>
+**2. Activate the virtual environment**
 On macOS/Linux:
 
 ```bash
@@ -17,4 +17,10 @@ source env/bin/activate
 
 ```bash
 pip3 install -r requirements.txt
+```
+
+**4. Run the server**
+
+```bash
+python3 server.py
 ```
