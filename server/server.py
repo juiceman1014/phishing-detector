@@ -3,9 +3,17 @@ from flask_cors import CORS
 import re
 import textract
 import tempfile
+from html_sanitizer import Sanitizer
 
 app = Flask(__name__)
 CORS(app)
+
+sanitizer = Sanitizer({
+    'tags': ['mark'],
+    'attributes': {},
+    'empty': [],
+    'separate': []
+})
 
 def is_phishing(message):
     msg = message.lower()
@@ -86,7 +94,7 @@ def highlight_phishing_indicators(message):
     
     highlighted = re.sub(r'(https:?//[^\s]+)', r'<mark>\1</mark>', highlighted)
 
-    return highlighted
+    return sanitizer.sanitize(highlighted)
     
 @app.route("/analyze", methods=["POST"])
 def analyze():
