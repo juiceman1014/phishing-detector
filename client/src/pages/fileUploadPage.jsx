@@ -10,9 +10,9 @@ const FileUploadPage = () => {
       const res = await axios.post("http://localhost:8000/scan-file", formData);
       
       if(res.data.is_phishing){
-        alert("This message is likely a phishing attempt!")
+        alert("This message is likely a phishing attempt!");
       }else{
-        alert("This message is legit!")
+        alert("This message is legit!");
       }
     } catch(err){
       console.error(err);

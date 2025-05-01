@@ -1,3 +1,4 @@
 flask
 flask-cors
 textract
+html-sanitizer
