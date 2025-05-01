@@ -127,11 +127,12 @@ def scan_file():
             content = textract.process(temp.name).decode('utf-8', errors='ignore')
 
         phishing = is_phishing(content)
+        highlighted = highlight_phishing_indicators(content) if phishing else ""
 
         return jsonify({
             "status":"received",
             "is_phishing":phishing,
-            "content_excerpt": content[:500]
+            "highlighted": highlighted[:500]
         })
     except Exception as e:
         print("Error processing file:", e)

@@ -1,6 +1,8 @@
 import axios from 'axios';
+import { useState } from 'react'
 
 const FileUploadPage = () => {
+  const [highlighted, setHighlighted] = useState("");
 
   const handleFileUpload = async (event) => {
     const formData = new FormData();
@@ -14,6 +16,8 @@ const FileUploadPage = () => {
       }else{
         alert("This message is legit!");
       }
+
+      setHighlighted(res.data.highlighted);
     } catch(err){
       console.error(err);
       alert("failed to scan the file.");
@@ -23,6 +27,13 @@ const FileUploadPage = () => {
   return (
     <div className = "flex flex-col justify-evenly items-center h-screen">
       <input type="file" onChange={handleFileUpload}/>
+
+      {highlighted && (
+        <div>
+          <h2>Here's what we flagged as phishing!</h2>
+          <div dangerouslySetInnerHTML={{__html: highlighted}}/>
+        </div>
+      )}
     </div>
   )
 }
