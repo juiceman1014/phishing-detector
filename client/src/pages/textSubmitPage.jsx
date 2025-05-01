@@ -2,7 +2,8 @@ import axios from 'axios';
 import { useState } from 'react'
 
 const TextSubmitPage = () => {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
+  const [highlighted, setHighlighted] = useState("");
 
   const handleSubmit = async () => {
     try{
@@ -10,16 +11,17 @@ const TextSubmitPage = () => {
         message: message,
       });
 
-      console.log("Server response: ", res.data);
+      console.log("Server response: ", res.data)
 
       alert(`Submitted! Server recieved: "${res.data.message}"`);
 
       if(res.data.is_phishing){
-        alert("This message is likely a phishing attempt!")
+        alert("This message is likely a phishing attempt!");
       }else{
-        alert("This message is legit!")
+        alert("This message is legit!");
       }
 
+      setHighlighted(res.data.highlighted);
     } catch(err){
       console.error("Error submitting message:", err);
       alert("Submission failed!");
@@ -35,6 +37,13 @@ const TextSubmitPage = () => {
         placeholder="Enter your suspicious message"
       />
       <button onClick={handleSubmit}>Submit</button>
+
+      {highlighted && (
+        <div>
+          <h2>Here's what we flagged as phishing!</h2>
+          <div dangerouslySetInnerHTML={{__html: highlighted}}/>
+        </div>
+      )}
     </div>
   )
 }
