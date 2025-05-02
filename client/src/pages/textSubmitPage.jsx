@@ -4,6 +4,7 @@ import { useState } from 'react'
 const TextSubmitPage = () => {
   const [message, setMessage] = useState("");
   const [highlighted, setHighlighted] = useState("");
+  const [isPhishing, setIsPhishing] = useState(null);
 
   const handleSubmit = async () => {
     try{
@@ -22,10 +23,24 @@ const TextSubmitPage = () => {
       }
 
       setHighlighted(res.data.highlighted);
+      setIsPhishing(res.data.is_phishing);
     } catch(err){
       console.error("Error submitting message:", err);
       alert("Submission failed!");
     }
+  };
+
+  const handleSave = () => {
+    const existing = JSON.parse(localStorage.getItem("savedMessages") || "[]");
+
+    const newEntry = {
+      message,
+      is_phishing: isPhishing,
+      timestamp: new Date().toISOString()
+    };
+
+    localStorage.setItem("savedMessages", JSON.stringify([...existing, newEntry]));
+    alert("Message saved locally!");
   };
 
   return (
@@ -37,6 +52,7 @@ const TextSubmitPage = () => {
         placeholder="Enter your suspicious message"
       />
       <button onClick={handleSubmit}>Submit</button>
+      <button onClick={handleSave} disabled={message.trim() === ""}>Save Message</button>
 
       {highlighted && (
         <div>

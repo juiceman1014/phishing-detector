@@ -13,6 +13,9 @@ const Navbar = () => {
             <Link to="/upload">
                 <button>Upload File</button>
             </Link>
+            <Link to="/saved">
+                <button>Saved Messages</button>
+            </Link>
         </nav>
     );
 }
