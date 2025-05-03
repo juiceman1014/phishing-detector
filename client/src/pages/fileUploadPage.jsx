@@ -25,17 +25,26 @@ const FileUploadPage = () => {
   };
 
   return (
-    <div className = "flex flex-col justify-evenly items-center h-screen">
-      <input type="file" onChange={handleFileUpload}/>
+    <div className="min-h-screen bg-blue-50 flex flex-col items-center justify-center px-4 py-8">
+      <h2 className="text-3xl font-semibold text-blue-700 mb-6">Upload a File to Scan</h2>
+
+      <label className="cursor-pointer bg-blue-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-600 transition mb-6">
+        <input
+          type="file"
+          onChange={handleFileUpload}
+          className="hidden"
+        />
+        Choose File
+      </label>
 
       {highlighted && (
-        <div>
-          <h2>Here's what we flagged as phishing!</h2>
-          <div dangerouslySetInnerHTML={{__html: highlighted}}/>
+        <div className="mt-6 max-w-xl bg-white p-6 rounded-lg shadow-md border border-blue-200">
+          <h3 className="text-lg font-medium text-blue-700 mb-2">Here's what we flagged as phishing:</h3>
+          <div className="text-gray-800" dangerouslySetInnerHTML={{ __html: highlighted }} />
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
 export default FileUploadPage;
