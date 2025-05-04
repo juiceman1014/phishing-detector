@@ -81,17 +81,16 @@ def highlight_phishing_indicators(message):
         "your account has been suspended", "unusual activity detected"
     ]
 
+    #highlight keywords
     escaped = [re.escape(kw) for kw in sorted(indicators, key=len, reverse=True)]
-    print(escaped)
     pattern = re.compile(r'(' + '|'.join(escaped) + r')', flags=re.IGNORECASE)
-    print(pattern)
-
     highlighted = pattern.sub(r'<mark>\1</mark>', message)
-    print(highlighted)
 
+    #highlight excessive exclamation marks
     if message.count("!") > 3:
         highlighted = highlighted.replace("!", "<mark>!</mark>")
     
+    #highlight URLs
     highlighted = re.sub(r'(https:?//[^\s]+)', r'<mark>\1</mark>', highlighted)
 
     return sanitizer.sanitize(highlighted)
