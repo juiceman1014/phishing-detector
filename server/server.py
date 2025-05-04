@@ -47,7 +47,7 @@ def is_phishing(message):
         score += 1
     
     # Check for urgency indicators
-    urgency_phrases = ["act now", "limited offer", "expires soon", "immediate action", "today only"]
+    urgency_phrases = ["act now", "limited offer", "expires soon", "immediate action", "today only", "legal action", "last warning"]
     score += sum(phrase in msg for phrase in urgency_phrases)
     
     # Check for sensitive information requests
@@ -78,7 +78,7 @@ def highlight_phishing_indicators(message):
         "pin", "mother's maiden name", "birth date", "passport",
         "kindly", "gud", "plz", "pls", "u ", " r ", "dear customer", "dear user",
         "verify your identity", "confirm your information", "update your account",
-        "your account has been suspended", "unusual activity detected"
+        "your account has been suspended", "unusual activity detected", "legal action", "last warning"
     ]
 
     #highlight keywords
