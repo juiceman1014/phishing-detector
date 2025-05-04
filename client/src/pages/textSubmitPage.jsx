@@ -14,8 +14,6 @@ const TextSubmitPage = () => {
 
       console.log("Server response: ", res.data)
 
-      alert(`Submitted! Server recieved: "${res.data.message}"`);
-
       if(res.data.is_phishing){
         alert("This message is likely a phishing attempt!");
       }else{
