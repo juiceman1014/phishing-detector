@@ -55,7 +55,7 @@ const TextSubmitPage = () => {
       <div className="mt-4 flex flex-col sm:flex-row gap-4">
         <button
           onClick={handleSubmit}
-          className="bg-blue-500 text-white px-6 py-2 rounded-md shadow-md hover:bg-blue-600 transition"
+          className="bg-blue-500 text-white px-6 py-2 rounded-md shadow-md hover:bg-blue-600 transition cursor-pointer"
         >
           Submit
         </button>
@@ -66,7 +66,7 @@ const TextSubmitPage = () => {
           className={`px-6 py-2 rounded-md shadow-md transition ${
             message.trim() === ""
               ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-              : "bg-teal-500 text-white hover:bg-teal-600"
+              : "bg-teal-500 text-white hover:bg-teal-600 cursor-pointer"
           }`}
         >
           Save Message

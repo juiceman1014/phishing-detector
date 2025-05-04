@@ -44,7 +44,7 @@ const SavedMessagesPage = () => {
           <div className="flex justify-center">
             <button
               onClick={handleClear}
-              className="bg-red-500 text-white px-6 py-2 rounded-md shadow-md hover:bg-red-600 transition"
+              className="bg-red-500 text-white px-6 py-2 rounded-md shadow-md hover:bg-red-600 transition cursor-pointer"
             >
               Clear All
             </button>
