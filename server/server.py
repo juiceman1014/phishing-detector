@@ -56,7 +56,7 @@ def is_phishing(message):
     score += sum(info in msg for info in sensitive_requests) * 2
     
     # Check for poor grammar and spelling
-    grammar_indicators = ["kindly", "gud", "ur", "plz", "pls", "u ", " r ", "dear customer", "dear user"]
+    grammar_indicators = ["kindly", "gud", "plz", "pls", "u ", " r ", "dear customer", "dear user"]
     if sum(indicator in msg for indicator in grammar_indicators) > 1:
         score += 1
     
@@ -76,7 +76,7 @@ def highlight_phishing_indicators(message):
         "act now", "limited offer", "expires soon", "immediate action", "today only",
         "ssn", "social security", "password", "credit card", "bank account",
         "pin", "mother's maiden name", "birth date", "passport",
-        "kindly", "gud", "ur", "plz", "pls", "u ", " r ", "dear customer", "dear user",
+        "kindly", "gud", "plz", "pls", "u ", " r ", "dear customer", "dear user",
         "verify your identity", "confirm your information", "update your account",
         "your account has been suspended", "unusual activity detected"
     ]
