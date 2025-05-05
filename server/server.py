@@ -131,7 +131,7 @@ def scan_file():
         return jsonify({
             "status":"received",
             "is_phishing":phishing,
-            "highlighted": highlighted[:500]
+            "highlighted": highlighted[:1000]
         })
     except Exception as e:
         print("Error processing file:", e)
