@@ -1,0 +1,19 @@
+Dear Valued Customer,
+
+We have noticed unusual activity on your bank account and have temporarily suspended access for your protection. To ensure that your funds remain secure, please verify your identity immediately by completing a brief security form.
+
+Failure to do so within 24 hours will result in permanent account suspension. We are committed to your security and want to ensure your access is restored as quickly as possible.
+
+Please click the link below to verify your account:
+
+https://secure-login.bankofamerica-verification.com/update
+
+You will be asked to confirm your name, social security number, account number, and debit card PIN. This is required to match your identity with our updated fraud prevention system.
+
+We apologize for the inconvenience and appreciate your prompt response to this urgent matter.
+
+Sincerely,  
+Fraud Prevention Team  
+Bank of America
+
+
