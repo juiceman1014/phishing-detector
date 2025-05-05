@@ -24,7 +24,7 @@ def is_phishing(message):
         "urgent", "click here", "limited time", "account suspended", "verify your account",
         "update your information", "security alert", "unusual activity", "confirm your details",
         "login attempt", "prize", "winner", "lottery", "inheritance", "claim your reward",
-        "password expired", "suspicious activity", "unauthorized access"
+        "password expired", "suspicious activity", "unauthorized access", "action required"
     ]
     score += sum(kw in msg for kw in keywords)
     
@@ -78,7 +78,7 @@ def highlight_phishing_indicators(message):
         "pin", "mother's maiden name", "birth date", "passport",
         "kindly", "gud", "plz", "pls", "u ", " r ", "dear customer", "dear user",
         "verify your identity", "confirm your information", "update your account",
-        "your account has been suspended", "unusual activity detected", "legal action", "last warning"
+        "your account has been suspended", "unusual activity detected", "legal action", "last warning", "action required"
     ]
 
     #highlight keywords
