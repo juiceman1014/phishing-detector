@@ -8,7 +8,7 @@ Clean:
 
 1. Hello,
 
-	This is a reminder that your appointment with Dr. Emily Hart is scheduled for Thursday, May 9 at 	2:30 PM. If you need to reschedule, please contact our office at (555) 123-4567 at least 24 hours 	in advance.
+	This is a reminder that your appointment with Dr. Emily Hart is scheduled for Thursday, May 9 at 2:30 PM. If you need to reschedule, please contact our office at (555) 123-4567 at least 24 hours in advance.
 
 	Thank you,  
 	Maplewood Health Clinic  
