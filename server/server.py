@@ -95,8 +95,8 @@ def highlight_phishing_indicators(message):
 
     return sanitizer.sanitize(highlighted)
     
-@app.route("/analyze", methods=["POST"])
-def analyze():
+@app.route("/scan-text", methods=["POST"])
+def scan_text():
     data = request.get_json()
     message = data.get("message", "")
     phishing = is_phishing(message)

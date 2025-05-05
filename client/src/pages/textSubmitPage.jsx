@@ -8,7 +8,7 @@ const TextSubmitPage = () => {
 
   const handleSubmit = async () => {
     try{
-      const res = await axios.post("http://localhost:8000/analyze", {
+      const res = await axios.post("http://localhost:8000/scan-text", {
         message: message,
       });
 
